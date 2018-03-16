@@ -201,7 +201,7 @@ namespace CityInfo.API.Controllers
                 return NotFound(nameof(city));
             }
 
-            var pointToBeDeleted = city.PointOfInterests.FirstOrDefault(_ => _.Id == pointId);
+            var pointToBeDeleted = city.PointOfInterests.FirstOrDefault(p => p.Id == pointId);
 
             if (pointToBeDeleted == null)
             {
