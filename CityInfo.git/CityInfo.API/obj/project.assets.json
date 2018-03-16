@@ -12276,11 +12276,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/Sai/Projects/NetCore/CityInfo/CityInfo.API/CityInfo.API.csproj",
+      "projectUniqueName": "/Users/Sai/Documents/GitHub/alzobaydee/CityInfo.git/CityInfo.API/CityInfo.API.csproj",
       "projectName": "CityInfo.API",
-      "projectPath": "/Users/Sai/Projects/NetCore/CityInfo/CityInfo.API/CityInfo.API.csproj",
+      "projectPath": "/Users/Sai/Documents/GitHub/alzobaydee/CityInfo.git/CityInfo.API/CityInfo.API.csproj",
       "packagesPath": "/Users/Sai/.nuget/packages/",
-      "outputPath": "/Users/Sai/Projects/NetCore/CityInfo/CityInfo.API/obj",
+      "outputPath": "/Users/Sai/Documents/GitHub/alzobaydee/CityInfo.git/CityInfo.API/obj",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

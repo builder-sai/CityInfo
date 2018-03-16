@@ -1,7 +1,9 @@
 ﻿<Properties StartupConfiguration="{A3BE5B59-F193-4E8E-AECC-F82339496B59}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="../CityInfo.git.diff">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CityInfo.API/Controllers/PointsOfInterestsController.cs">
     <Files>
-      <File FileName="../CityInfo.git.diff" Line="1" Column="1" />
+      <File FileName="CityInfo.API/Models/PointsOfInterestsForCreationDto.cs" Line="16" Column="34" />
+      <File FileName="CityInfo.API/Models/PointsOfInterestsForUpdateDto.cs" Line="7" Column="6" />
+      <File FileName="CityInfo.API/Controllers/PointsOfInterestsController.cs" Line="172" Column="50" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

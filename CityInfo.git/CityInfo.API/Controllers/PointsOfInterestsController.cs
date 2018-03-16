@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CityInfo.API.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.JsonPatch;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -26,7 +27,7 @@ namespace CityInfo.API.Controllers
             return Ok(city.PointOfInterests);
         }
 
-        [Route("{cityId}/pointsofinterests/{pointId}", Name = "GetPointOfInterest")]
+        [Route("{cityId}/pointsofinterest/{pointId}", Name = "GetPointOfInterest")]
         public IActionResult GetPointOfInterest(int cityId, int pointId)
         {
             var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
@@ -52,11 +53,17 @@ namespace CityInfo.API.Controllers
             {
                 return BadRequest();
             }
+            // adding a custom error when adding the same text in both name and descr property
+            if (pointOfInterest.Description == pointOfInterest.Name)
+            {
+                ModelState.AddModelError("Description", "The provided Description should differ from the Name");
+            }
 
             // if one of the properties does not adhere to our PointsofInterestsCreation model we send a bad request
             if (!ModelState.IsValid)
             {
-                return BadRequest();
+                //returning the ModelState to inform the client what went wrong
+                return BadRequest(ModelState);
             }
 
             //the consumer might send a request to a resource URI that does not exists
@@ -83,9 +90,127 @@ namespace CityInfo.API.Controllers
 
             city.PointOfInterests.Add(newPointOfIntersst);
 
-            return CreatedAtRoute("GetPointOfInterest", new{
-                cityId = cityId, pointId = newPointOfIntersst.Id
+            return CreatedAtRoute("GetPointOfInterest", new
+            {
+                cityId = cityId,
+                pointId = newPointOfIntersst.Id
             }, newPointOfIntersst);
+        }
+
+        //When doing a full update use the HttpPut
+        [HttpPut("{cityId}/pointsofinterest/{pointId}")]
+        public IActionResult UpdatePointOfInterest(int cityId, int pointId,
+                   [FromBody] PointsOfInterestsForUpdateDto pointOfInterest)
+        {
+            //these validations are just for now, fluentValidation should be used for bigger projects
+            if (pointOfInterest == null)//could not serialize body
+            {
+                return BadRequest();
+            }
+            // adding a custom error when adding the same text in both name and descr property
+            if (pointOfInterest.Description == pointOfInterest.Name)
+            {
+                ModelState.AddModelError("Description", "The provided Description should differ from the Name");
+            }
+
+            // if one of the properties does not adhere to our PointsofInterestsCreation model we send a bad request
+            if (!ModelState.IsValid)
+            {
+                //returning the ModelState to inform the client what went wrong
+                return BadRequest(ModelState);
+            }
+
+            var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
+            if (city == null)
+            {
+                return NotFound();
+            }
+
+            var pointOfInterestFromStore = city.PointOfInterests.FirstOrDefault(p => p.Id == pointId);
+            if (pointOfInterestFromStore == null)
+            {
+                return NotFound();
+            }
+
+            //According to the HTTP Standard a Put should fully update the resource
+            //This mean the consumer has to provide all the information needed for the update
+            // if the consumer does not provide a value for a field the value should
+            //default to it's previous value but we still need to always updates all fields
+
+            pointOfInterestFromStore.Name = pointOfInterest.Name;
+            pointOfInterestFromStore.Description = pointOfInterest.Description;
+
+            //we could return Ok with the updated content but typically for update you'd return NoContent()
+            //noContent says the task is completed successfully but no content to return
+            return NoContent();
+
+        }
+
+        [HttpPatch("{cityId}/pointsofinterest/{pointId}")]
+        public IActionResult PartiallyUpdatePoint(int cityId, int pointId,
+            //from micrsofit.aspnetcore.jsonpatch to support the jsonpatch operations
+            [FromBody] JsonPatchDocument<PointsOfInterestsForUpdateDto> patchDoc)
+        {
+            if (patchDoc == null)//could not serialize body
+            {
+                return BadRequest();
+            }
+
+            // if one of the properties does not adhere to our PointsofInterestsCreation model we send a bad request
+            if (!ModelState.IsValid)
+            {
+                //returning the ModelState to inform the client what went wrong
+                return BadRequest(ModelState);
+            }
+
+            var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
+            if (city == null)
+            {
+                return NotFound();
+            }
+
+            var pointOfInterestFromStore = city.PointOfInterests.FirstOrDefault(p => p.Id == pointId);
+            if (pointOfInterestFromStore == null)
+            {
+                return NotFound();
+            }
+
+            var pointOfInterestToPatch = new PointsOfInterestsForUpdateDto
+            {
+                Name = pointOfInterestFromStore.Name,
+                Description = pointOfInterestFromStore.Description
+            };
+
+            //adding the ModelState to the ApplyTo to add any error to the ModelState's error collection
+            patchDoc.ApplyTo(pointOfInterestToPatch, ModelState);
+
+            //We try to ApplyTo and if there 
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            return NoContent();
+        }
+
+        [HttpDelete("{cityId}/pointsofinterest/{pointId}")]
+        public IActionResult DeletePointOfInterest(int cityId, int pointId)
+        {
+            var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
+            if (city == null)
+            {
+                return NotFound(nameof(city));
+            }
+
+            var pointToBeDeleted = city.PointOfInterests.FirstOrDefault(_ => _.Id == pointId);
+
+            if (pointToBeDeleted == null)
+            {
+                return NotFound(nameof(pointToBeDeleted));
+            }
+
+            city.PointOfInterests.Remove(pointToBeDeleted);
+
+            return NoContent();
         }
     }
 }
