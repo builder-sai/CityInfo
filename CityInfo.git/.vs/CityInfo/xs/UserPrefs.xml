@@ -2,8 +2,9 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="CityInfo.API/Controllers/PointsOfInterestsController.cs">
     <Files>
       <File FileName="CityInfo.API/Models/PointsOfInterestsForCreationDto.cs" Line="16" Column="34" />
-      <File FileName="CityInfo.API/Models/PointsOfInterestsForUpdateDto.cs" Line="7" Column="6" />
-      <File FileName="CityInfo.API/Controllers/PointsOfInterestsController.cs" Line="172" Column="50" />
+      <File FileName="CityInfo.API/Models/PointsOfInterestsForUpdateDto.cs" Line="6" Column="19" />
+      <File FileName="CityInfo.API/Startup.cs" Line="60" Column="67" />
+      <File FileName="CityInfo.API/Controllers/PointsOfInterestsController.cs" Line="43" Column="13" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

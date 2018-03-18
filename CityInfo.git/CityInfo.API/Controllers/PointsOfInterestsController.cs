@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CityInfo.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.Extensions.Logging;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,15 +17,49 @@ namespace CityInfo.API.Controllers
     [Route("api/cities")]
     public class PointsOfInterestsController : Controller
     {
+        //the container (from Configure method in the Startup.cs) can provide us with an ILogger<T> instance
+        // when this technique is used the Logger would automatically use the
+        //types name as it's category name
+        //so for our PointsOfInterestsController we need an ILogger<PointsOfInterestsController>
+
+        private ILogger<PointsOfInterestsController> _logger;
+        //we inject it in the ctor telling it we expect a logger
+        public PointsOfInterestsController(ILogger<PointsOfInterestsController>logger)
+        {
+            _logger = logger;
+
+            //if you cant use the implementation above then you could request the logger from the container itself directly
+            //this provide access to the httpContext Container
+            //HttpContext.RequestServices.GetService() to get services
+            //but it's advised to use the injection method instead.
+        }
         [HttpGet("{cityId}/pointsofinterests")]
         public IActionResult GetPointsOfInterests(int cityId)
         {
-            var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
-            if (city == null)
+            
+            try
             {
-                return NotFound();
+                throw new Exception("exemple");
+                var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
+                if (city == null)
+                {
+                    //effectively logging something
+                    _logger.LogInformation($"the city id {cityId} could not be found.");
+                    return NotFound();
+                }
+                return Ok(city.PointOfInterests);
+
             }
-            return Ok(city.PointOfInterests);
+            catch (Exception ex)
+            {
+                _logger.LogCritical($"Error with cityId: {cityId}, Message: {ex.Message}");
+                //throwing an error would result in a 500 error, add an optional error message
+                //but be care full not to log any implementation info
+                //do don't expose the ex.Message in here because this might potientially expose
+                //some details. We have logged the message so there is no need to expose that to the consumer
+                return StatusCode(500, "An error occured while handling the request");
+            }
+           
         }
 
         [Route("{cityId}/pointsofinterest/{pointId}", Name = "GetPointOfInterest")]
