@@ -26,9 +26,9 @@ namespace CityInfo.API.Controllers
         private ILogger<PointsOfInterestsController> _logger;
         //we inject it in the ctor telling it we expect a logger
 
-        private LocalMailService _mailService;
+        private IMailService _mailService;
 
-        public PointsOfInterestsController(ILogger<PointsOfInterestsController> logger, LocalMailService mailService)
+        public PointsOfInterestsController(ILogger<PointsOfInterestsController> logger, IMailService mailService)
         {
             _logger = logger;
 

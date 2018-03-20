@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace CityInfo.API.Services
 {
-    public class LocalMailService
+    public class LocalMailService : IMailService
     {
         //adding a fake/local mail custom service
         private string _mailTo = "admin@cityinfo.com";

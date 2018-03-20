@@ -64,11 +64,18 @@ namespace CityInfo.API
             //will use the same instance
             //services.AddSingleton
 
-            //The local mail service is lightwight and stateless so we can use the Transient livetime
-            //this now uses a concret implementation of the class, this makes it hard for a testing service in diff environments
-            services.AddTransient<LocalMailService>();
-            //now we can inject this in our point of interest controller so in case of deleting a point of interest
-            //we would like to send an email to notify the admin.
+
+            //this would send all our emailing via the LocalMailService.
+            //if we would want to use the CloudMailService we can use
+            //the compile directives telling the compile what to omit and what to add
+            //to compile
+#if DEBUG
+            // if DEBUG would run if the code is compiled in debug else if in release it would run the other one
+            services.AddTransient<IMailService, LocalMailService>();
+#else
+            services.AddTransient<IMailService, CloudMailService>();
+#endif
+
 
         }
 
