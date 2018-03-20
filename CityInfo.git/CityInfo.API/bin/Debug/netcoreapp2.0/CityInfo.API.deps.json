@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "6657368e738c5d2de13dddc04cb427ec71317dd0"
+    "signature": "d8034f1eb8afcbc6c63ca72806b4a8dc4907a4f0"
   },
   "compilationOptions": {
     "defines": [
@@ -25,6 +25,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.All": "2.0.0",
           "Microsoft.NETCore.App": "2.0.0",
+          "NLog": "4.4.13",
           "Newtonsoft.Json": "11.0.1"
         },
         "runtime": {
@@ -2336,6 +2337,14 @@
         },
         "compile": {
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
+        }
+      },
+      "NLog/4.4.13": {
+        "runtime": {
+          "lib/net45/NLog.dll": {}
+        },
+        "compile": {
+          "lib/net45/NLog.dll": {}
         }
       },
       "Remotion.Linq/2.1.1": {
@@ -5058,6 +5067,13 @@
       "sha512": "sha512-5PYT/IqQ+UK31AmZiSS102R6EsTo+LGTSI8bp7WAUqDKaF4wHXD8U9u4WxTI1vc64tYi++8p3dk3WWNqPFgldw==",
       "path": "newtonsoft.json.bson/1.0.1",
       "hashPath": "newtonsoft.json.bson.1.0.1.nupkg.sha512"
+    },
+    "NLog/4.4.13": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EJU3yYEW1migC1lG8dhX6Vi/DKJ8VuRL7JmJnLh1iQFIWh5lRQbZ8Zu9i6t/iP3h2Q6m6VeZjz6/mVmRvEKwYQ==",
+      "path": "nlog/4.4.13",
+      "hashPath": "nlog.4.4.13.nupkg.sha512"
     },
     "Remotion.Linq/2.1.1": {
       "type": "package",

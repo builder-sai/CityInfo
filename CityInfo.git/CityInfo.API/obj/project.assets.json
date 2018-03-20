@@ -2707,6 +2707,15 @@
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
         }
       },
+      "NLog/4.4.13": {
+        "type": "package",
+        "compile": {
+          "lib/net45/NLog.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NLog.dll": {}
+        }
+      },
       "Remotion.Linq/2.1.1": {
         "type": "package",
         "dependencies": {
@@ -7463,6 +7472,31 @@
         "lib/netstandard1.3/Newtonsoft.Json.Bson.xml",
         "newtonsoft.json.bson.1.0.1.nupkg.sha512",
         "newtonsoft.json.bson.nuspec"
+      ]
+    },
+    "NLog/4.4.13": {
+      "sha512": "EJU3yYEW1migC1lG8dhX6Vi/DKJ8VuRL7JmJnLh1iQFIWh5lRQbZ8Zu9i6t/iP3h2Q6m6VeZjz6/mVmRvEKwYQ==",
+      "type": "package",
+      "path": "nlog/4.4.13",
+      "files": [
+        "lib/MonoAndroid10/NLog.dll",
+        "lib/MonoAndroid10/NLog.xml",
+        "lib/Xamarin.iOS10/NLog.dll",
+        "lib/Xamarin.iOS10/NLog.xml",
+        "lib/net35/NLog.dll",
+        "lib/net35/NLog.xml",
+        "lib/net40/NLog.dll",
+        "lib/net40/NLog.xml",
+        "lib/net45/NLog.dll",
+        "lib/net45/NLog.xml",
+        "lib/sl4/NLog.dll",
+        "lib/sl4/NLog.xml",
+        "lib/sl5/NLog.dll",
+        "lib/sl5/NLog.xml",
+        "lib/wp8/NLog.dll",
+        "lib/wp8/NLog.xml",
+        "nlog.4.4.13.nupkg.sha512",
+        "nlog.nuspec"
       ]
     },
     "Remotion.Linq/2.1.1": {
@@ -12266,6 +12300,7 @@
     ".NETCoreApp,Version=v2.0": [
       "Microsoft.AspNetCore.All >= 2.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
+      "NLog >= 4.4.13",
       "Newtonsoft.Json >= 11.0.1"
     ]
   },
@@ -12321,6 +12356,10 @@
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "11.0.1"
+          },
+          "NLog": {
+            "target": "Package",
+            "version": "4.4.13"
           }
         },
         "imports": [
@@ -12330,5 +12369,17 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'NLog 4.4.13' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
+      "libraryId": "NLog",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.0"
+      ]
+    }
+  ]
 }

@@ -1,10 +1,11 @@
-﻿<Properties StartupConfiguration="{A3BE5B59-F193-4E8E-AECC-F82339496B59}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CityInfo.API/Controllers/PointsOfInterestsController.cs">
+﻿<Properties StartupConfiguration="{A3BE5B59-F193-4E8E-AECC-F82339496B59}|Default" GitUserInfo="UsingGIT" NuGet.AddPackagesDialog.IncludePrerelease="True">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CityInfo.API/Startup.cs">
     <Files>
       <File FileName="CityInfo.API/Models/PointsOfInterestsForCreationDto.cs" Line="16" Column="34" />
       <File FileName="CityInfo.API/Models/PointsOfInterestsForUpdateDto.cs" Line="6" Column="19" />
-      <File FileName="CityInfo.API/Startup.cs" Line="60" Column="67" />
-      <File FileName="CityInfo.API/Controllers/PointsOfInterestsController.cs" Line="43" Column="13" />
+      <File FileName="CityInfo.API/Controllers/PointsOfInterestsController.cs" Line="43" Column="20" />
+      <File FileName="CityInfo.API/Services/LocalMailService.cs" Line="22" Column="35" />
+      <File FileName="CityInfo.API/Startup.cs" Line="54" Column="22" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

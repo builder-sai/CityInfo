@@ -6,6 +6,7 @@ using CityInfo.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.Extensions.Logging;
+using CityInfo.API.Services;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -24,7 +25,10 @@ namespace CityInfo.API.Controllers
 
         private ILogger<PointsOfInterestsController> _logger;
         //we inject it in the ctor telling it we expect a logger
-        public PointsOfInterestsController(ILogger<PointsOfInterestsController>logger)
+
+        private LocalMailService _mailService;
+
+        public PointsOfInterestsController(ILogger<PointsOfInterestsController> logger, LocalMailService mailService)
         {
             _logger = logger;
 
@@ -32,6 +36,9 @@ namespace CityInfo.API.Controllers
             //this provide access to the httpContext Container
             //HttpContext.RequestServices.GetService() to get services
             //but it's advised to use the injection method instead.
+            //----
+            //now we can use the send method to send "email" in the Delete method
+            _mailService = mailService;
         }
         [HttpGet("{cityId}/pointsofinterests")]
         public IActionResult GetPointsOfInterests(int cityId)
@@ -39,7 +46,6 @@ namespace CityInfo.API.Controllers
             
             try
             {
-                throw new Exception("exemple");
                 var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
                 if (city == null)
                 {
@@ -244,6 +250,9 @@ namespace CityInfo.API.Controllers
             }
 
             city.PointOfInterests.Remove(pointToBeDeleted);
+
+            //notify the deletion
+            _mailService.Send("Point of interest was deleted", $"Point of interest: {pointToBeDeleted.Name}, with Id: {pointToBeDeleted.Id}");
 
             return NoContent();
         }

@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
+using CityInfo.API.Services;
+
 
 namespace CityInfo.API
 {
@@ -49,6 +51,24 @@ namespace CityInfo.API
             //        castedResolver.NamingStrategy = null;
             //    }
             //});
+
+            //AddTransient are created each time the service is requested
+            //this livetime works best for lightwight stateless services
+            //services.AddTransient
+
+            //Scoped livetime are created once per request
+            //services.AddScoped
+
+            //are created once when the service is requested or if you define a service
+            //it would be created when the ConfigureSerivce is run and Every subsequent request
+            //will use the same instance
+            //services.AddSingleton
+
+            //The local mail service is lightwight and stateless so we can use the Transient livetime
+            services.AddTransient<LocalMailService>();
+            //now we can inject this in our point of interest controller so in case of deleting a point of interest
+            //we would like to send an email to notify the admin.
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +79,8 @@ namespace CityInfo.API
             //this addDebug would add info to the debugger window
             //addConsole would add to the console windwo and so on
             loggerFactory.AddDebug();
+
+            //loggerFactory.AddNlog();
             
             if (env.IsDevelopment())
             {
