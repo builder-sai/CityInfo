@@ -65,6 +65,7 @@ namespace CityInfo.API
             //services.AddSingleton
 
             //The local mail service is lightwight and stateless so we can use the Transient livetime
+            //this now uses a concret implementation of the class, this makes it hard for a testing service in diff environments
             services.AddTransient<LocalMailService>();
             //now we can inject this in our point of interest controller so in case of deleting a point of interest
             //we would like to send an email to notify the admin.
