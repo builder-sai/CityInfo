@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json.Serialization;
+using Microsoft.Extensions.Configuration.Json;
 using CityInfo.API.Services;
 
 
@@ -16,12 +16,19 @@ namespace CityInfo.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public static IConfiguration Configuration;
+        public Startup(IHostingEnvironment env)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .AddJsonFile($"appsettings-{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+
+            ////from now on our app settings are on!
+            Configuration = builder.Build();
+
         }
 
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // used to configure services and containers

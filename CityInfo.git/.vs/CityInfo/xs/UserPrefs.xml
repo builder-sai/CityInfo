@@ -1,13 +1,14 @@
 ﻿<Properties StartupConfiguration="{A3BE5B59-F193-4E8E-AECC-F82339496B59}|Default" GitUserInfo="UsingGIT" NuGet.AddPackagesDialog.IncludePrerelease="True">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CityInfo.git Status">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CityInfo.API/Services/CloudMailService.cs">
     <Files>
-      <File FileName="CityInfo.API/Services/LocalMailService.cs" Line="21" Column="55" />
-      <File FileName="CityInfo.API/Startup.cs" Line="70" Column="68" />
-      <File FileName="CityInfo.API/Services/IMailService.cs" Line="4" Column="23" />
-      <File FileName="CityInfo.API/Services/CloudMailService.cs" Line="10" Column="59" />
-      <File FileName="CityInfo.API/Controllers/PointsOfInterestsController.cs" Line="255" Column="15" />
-      <File FileName="CityInfo.API/CityInfo.API.csproj" Line="14" Column="33" />
-      <File FileName="CityInfo.git Status" />
+      <File FileName="CityInfo.API/Services/LocalMailService.cs" Line="8" Column="50" />
+      <File FileName="CityInfo.API/Startup.cs" Line="19" Column="52" />
+      <File FileName="CityInfo.API/Services/CloudMailService.cs" Line="7" Column="6" />
+      <File FileName="CityInfo.API/Controllers/PointsOfInterestsController.cs" Line="34" Column="13" />
+      <File FileName="CityInfo.API/appsettings.json" Line="7" Column="1" />
+      <File FileName="CityInfo.API/appsettings.Production.json" Line="1" Column="1" />
+      <File FileName="CityInfo.API/Program.cs" Line="21" Column="1" />
+      <File FileName="CityInfo.API/Services/IMailService.cs" Line="6" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
