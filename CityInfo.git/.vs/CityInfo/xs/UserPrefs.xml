@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{A3BE5B59-F193-4E8E-AECC-F82339496B59}|Default" GitUserInfo="UsingGIT" NuGet.AddPackagesDialog.IncludePrerelease="True">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CityInfo.API/Services/CloudMailService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CityInfo.API/Entities/City.cs">
     <Files>
       <File FileName="CityInfo.API/Services/LocalMailService.cs" Line="8" Column="50" />
       <File FileName="CityInfo.API/Startup.cs" Line="19" Column="52" />
@@ -9,6 +9,8 @@
       <File FileName="CityInfo.API/appsettings.Production.json" Line="1" Column="1" />
       <File FileName="CityInfo.API/Program.cs" Line="21" Column="1" />
       <File FileName="CityInfo.API/Services/IMailService.cs" Line="6" Column="9" />
+      <File FileName="CityInfo.API/Entities/City.cs" Line="10" Column="9" />
+      <File FileName="CityInfo.API/Entities/PointOfInterest.cs" Line="6" Column="8" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
