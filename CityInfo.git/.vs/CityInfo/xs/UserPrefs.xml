@@ -1,23 +1,23 @@
-﻿<Properties StartupConfiguration="{A3BE5B59-F193-4E8E-AECC-F82339496B59}|Default" GitUserInfo="UsingGIT" NuGet.AddPackagesDialog.IncludePrerelease="True">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CityInfo.API/Entities/City.cs">
+﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{A3BE5B59-F193-4E8E-AECC-F82339496B59}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CityInfo.API/Controllers/PointsOfInterestsController.cs">
     <Files>
       <File FileName="CityInfo.API/Services/LocalMailService.cs" Line="8" Column="50" />
       <File FileName="CityInfo.API/Startup.cs" Line="19" Column="52" />
       <File FileName="CityInfo.API/Services/CloudMailService.cs" Line="7" Column="6" />
-      <File FileName="CityInfo.API/Controllers/PointsOfInterestsController.cs" Line="34" Column="13" />
+      <File FileName="CityInfo.API/Controllers/PointsOfInterestsController.cs" Line="134" Column="42" />
       <File FileName="CityInfo.API/appsettings.json" Line="7" Column="1" />
       <File FileName="CityInfo.API/appsettings.Production.json" Line="1" Column="1" />
       <File FileName="CityInfo.API/Program.cs" Line="21" Column="1" />
       <File FileName="CityInfo.API/Services/IMailService.cs" Line="6" Column="9" />
-      <File FileName="CityInfo.API/Entities/City.cs" Line="10" Column="9" />
-      <File FileName="CityInfo.API/Entities/PointOfInterest.cs" Line="6" Column="8" />
+      <File FileName="CityInfo.API/Entities/City.cs" Line="14" Column="9" />
+      <File FileName="CityInfo.API/Entities/PointOfInterest.cs" Line="8" Column="14" />
     </Files>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.CityInfo.API PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.CityInfo.API PreferredExecutionTarget="MonoDevelop.Default" />
   <MultiItemStartupConfigurations />
 </Properties>

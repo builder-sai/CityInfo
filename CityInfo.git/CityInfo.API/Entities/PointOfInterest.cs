@@ -12,9 +12,13 @@ namespace CityInfo.API.Entities
         [MaxLength(50)]
         public string Name { get; set; }
 
+        //City as the navigation property from PointOfInterest to it's
+        //parent property City
         [ForeignKey("CityId")]
         public City City { get; set; }
 
         public int CityId { get; set; }
+
+        //now added a nuget package (Microsoft.EntityFrameworkCore.SqlServer
     }
 }
