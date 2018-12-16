@@ -69,6 +69,7 @@ namespace CityInfo.API.Controllers
         }
 
         [Route("{cityId}/pointsofinterest/{pointId}", Name = "GetPointOfInterest")]
+        [HttpGet]
         public IActionResult GetPointOfInterest(int cityId, int pointId)
         {
             var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);

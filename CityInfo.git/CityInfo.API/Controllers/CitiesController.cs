@@ -14,15 +14,15 @@ namespace CityInfo.API.Controllers
         // i.g. (200 code stats = ok, 404 not found and such)
         //using IActionResult help us send our data in other formats that the API
         // supports instead of only json in the JsonResult
-        [HttpGet()]
-        public IActionResult getCities()
+        [HttpGet]
+        public IActionResult GetCities()
         {
             //there is no not found here because even an empty list
             // is a valid response body
             return Ok(CitiesDataStore.Current.Cities);
         }
         [HttpGet("{id}")]
-        public IActionResult getCity(int id){
+        public IActionResult GetCity([FromQuery]int id){
             var cityToReturn = CitiesDataStore.Current.Cities.FirstOrDefault(x => x.Id == id);
             if (cityToReturn == null)
             {

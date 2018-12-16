@@ -10,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration.Json;
 using CityInfo.API.Services;
-
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace CityInfo.API
 {
@@ -82,7 +82,10 @@ namespace CityInfo.API
 #else
             services.AddTransient<IMailService, CloudMailService>();
 #endif
-
+            services.AddSwaggerGen(c =>
+            { 
+            c.SwaggerDoc("v1", new Info { Title = "Cities info API", Version = "v1" });
+            });
 
         }
 
@@ -109,6 +112,11 @@ namespace CityInfo.API
             app.UseStatusCodePages();
             app.UseStaticFiles();
 
+            app.UseSwagger();
+            app.UseSwaggerUI(s =>
+            {
+                s.SwaggerEndpoint("/swagger/v1/swagger.json", "Cities info API V1");
+            });
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
